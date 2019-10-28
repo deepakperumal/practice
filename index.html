@@ -80,7 +80,7 @@
       </div>
       <div class="container mt-3">
         <h4 class="">Add Name Field</h4>
-        <button class="calsalaryrange  " onclick="addNameOnClick()">
+        <button class="calsalaryrange  " onclick="addName1()">
           Submit
         </button>
       </div>
@@ -88,7 +88,7 @@
       <div class="container mt-3">
         <h4 class="">Search By Phone Number</h4>
         <input class="range  " id="phone_no" placeholder="Phone Number" />
-        <button class="calsalaryrange mt-3  " onclick="getEmpByPhoneOnClick()">
+        <button class="calsalaryrange mt-3  " onclick="getEmpByPhone1()">
           Submit
         </button>
       </div>
@@ -96,7 +96,7 @@
       <div class="container mt-3">
         <h4 class="">Search By Name / Phone Number</h4>
         <input class="range  " id="phone" placeholder="Phone / Name" />
-        <button class="calsalaryrange mt-3  " onclick="getEmpByNameOrPhoneOnClick()">
+        <button class="calsalaryrange mt-3  " onclick="getEmpByNameOrPhone1()">
           Submit
         </button>
       </div>
@@ -109,7 +109,7 @@
         <input class="range mt-3 " id="dob" placeholder="Dob" />
         <input class="range mt-3 " id="address" placeholder="Address" />
         <input class="range mt-3 " id="mobile" placeholder="Mobile" />
-        <button class="calsalaryrange mt-3  " onclick="addEmployeesOnClick()">
+        <button class="calsalaryrange mt-3  " onclick="addEmployees1()">
           Submit
         </button>
       </div>
@@ -221,7 +221,7 @@
 
     /*------------------------------------   Add Employee ---------------------------------------------*/
 
-    addEmployeesOnClick = () => {
+    addEmployees1 = () => {
       fName = document.getElementById('fname').value;
       lName = document.getElementById('lname').value;
       age = document.getElementById('age').value;
@@ -255,7 +255,7 @@
 
     /*----------------------------------  Filter by Name/Phone  ---------------------------------------*/
 
-    getEmpByNameOrPhoneOnClick = () => {
+    getEmpByNameOrPhone1 = () => {
       generateTable(
         getEmpByNameOrPhone(document.getElementById('phone').value)
       );
@@ -275,7 +275,7 @@
 
     /*----------------------------------  Filter by Phone  ---------------------------------------*/
 
-    getEmpByPhoneOnClick = () => {
+    getEmpByPhone1 = () => {
       generateTable(getEmpByPhone(document.getElementById('phone_no').value));
     };
 
@@ -285,9 +285,9 @@
       return (temp = employees.filter(x => x.mobile == data));
     };
 
-    /*--------------------------------------   Add Name Field ----------------------------------------*/
+    /*------------------------------------ Add Name Field ----------------------------------------*/
 
-    addNameOnClick = () => {
+    addName1 = () => {
       generateTable(addName());
     };
 
