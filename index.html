@@ -273,7 +273,7 @@
       ));
     };
 
-    /*----------------------------------  Filter by Phone  ---------------------------------------*/
+    /*------------------------------------  Filter by Phone  ---------------------------------------*/
 
     getEmpByPhone1 = () => {
       generateTable(getEmpByPhone(document.getElementById('phone_no').value));
@@ -299,7 +299,7 @@
       return employees;
     };
 
-    /*--------------------------------------   Filter By Salary --------------------------------------*/
+    /*----------------------------------   Filter By Salary --------------------------------------*/
 
     filterBySalary = () => {
       var range1 = document.getElementById('range1').value;
@@ -322,7 +322,7 @@
       return temp;
     };
 
-    /*---------------------------------------   Sort Employee  ----------------------------------------*/
+    /*------------------------------------ Sort Employee  ----------------------------------------*/
 
     var sortEmployees = (element, order) => {
       var clonedObj = Object.values(Object.assign({}, employees));
@@ -371,7 +371,7 @@
         )
       );
     };
-    /*------------------------------------   Generate Table  ----------------------------------------*/
+    /*----------------------------------   Generate Table  ----------------------------------------*/
     generateTable = obj => {
       var clonedObj = obj;
       var str = '';
