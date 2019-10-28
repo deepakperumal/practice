@@ -1,358 +1,391 @@
 <html>
-  <head>
-    <style>
-      .range {
-        padding: 4px;
-        width: 30%;
-      }
 
-      .mt-3 {
-        margin-top: 12px;
-      }
+<head>
+  <style>
+    .range {
+      padding: 4px;
+      width: 30%;
+    }
 
-      .calsalaryrange {
-        padding: 6px;
-        width: 30%;
-        color: black;
-        background: #ffffff;
-        border: 1px solid;
-        cursor: pointer;
-      }
-      .container {
-        display: inline-grid;
-        width: 100%;
-      }
-      .select-field {
-        width: 30%;
-        padding: 8px;
-        margin-top: 7px;
-        background: #ffff;
-      }
-      .content1 {
-        width: 50%;
-        float: left;
-      }
+    .mt-3 {
+      margin-top: 12px;
+    }
 
-      #employee {
-        border-collapse: collapse;
-        width: 100%;
+    .calsalaryrange {
+      padding: 6px;
+      width: 30%;
+      color: black;
+      background: #ffffff;
+      border: 1px solid;
+      cursor: pointer;
+    }
 
-        font-size: 14px;
-      }
+    .container {
+      display: inline-grid;
+      width: 100%;
+    }
 
-      #employee td,
-      #employee th {
-        border: 1px solid #ddd;
-        padding: 8px;
-      }
+    .select-field {
+      width: 30%;
+      padding: 8px;
+      margin-top: 7px;
+      background: #ffff;
+    }
 
-      #employee tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
+    .content1 {
+      width: 50%;
+      float: left;
+    }
 
-      #employee th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-      }
-      .res {
-        width: 53px;
-        float: right;
-      }
-    </style>
-  </head>
+    #employee {
+      border-collapse: collapse;
+      width: 100%;
 
-  <body>
-    <div class="wrapper">
-      <div class="content1">
-        <div class="container">
-          <h4 class="mt-3">Display Salary Range</h4>
-          <input class="range  " id="range1" placeholder="Range1" />
-          <input class="range mt-3" id="range2" placeholder="Range2" />
-          <button class="calsalaryrange mt-3" onclick="filterBySalary()">
-            Submit
-          </button>
-        </div>
-        <div class="container mt-3">
-          <h4 class="">Add Name Field</h4>
-          <button class="calsalaryrange  " onclick="addName()">
-            Submit
-          </button>
-        </div>
-        <div class="container mt-3">
-          <h4 class="">Search By Name / Phone Number</h4>
-          <input class="range  " id="phone" placeholder="Phone / Name" />
-          <button class="calsalaryrange mt-3  " onclick="getEmpByNameOrPhone()">
-            Submit
-          </button>
-        </div>
-        <div class="container mt-3">
-          <h4 class="">Add Employees</h4>
-          <input class="range mt-3 " id="fname" placeholder="First Name" />
-          <input class="range mt-3 " id="lname" placeholder="Last Name" />
-          <input class="range mt-3 " id="age" placeholder="Age" />
-          <input class="range mt-3 " id="salary" placeholder="Salary" />
-          <input class="range mt-3 " id="dob" placeholder="Dob" />
-          <input class="range mt-3 " id="address" placeholder="Address" />
-          <input class="range mt-3 " id="mobile" placeholder="Mobile" />
-          <button class="calsalaryrange mt-3  " onclick="addEmployees()">
-            Submit
-          </button>
-        </div>
-        <div class="container mt-3">
-          <h4 class="">Sort Employee</h4>
-          <select id="field1" class="select-field">
-            <option value="fName">First Name</option>
-            <option value="lName">Last Name</option>
-            <option value="age">Age</option>
-            <option value="salary">Salary</option>
-            <option value="dob">Dob</option>
-            <option value="address">Address</option>
-            <option value="mobile">Mobile</option>
-          </select>
-          <select id="field2" class="select-field">
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-          <button class="calsalaryrange mt-3  " onclick="soreEmp()">
-            Submit
-          </button>
-        </div>
+      font-size: 14px;
+    }
+
+    #employee td,
+    #employee th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #employee tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #employee th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+    }
+
+    .res {
+      width: 53px;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content1">
+      <div class="container">
+        <h4 class="mt-3">Display Salary Range</h4>
+        <input class="range  " id="range1" placeholder="Range1" />
+        <input class="range mt-3" id="range2" placeholder="Range2" />
+        <button class="calsalaryrange mt-3" onclick="filterBySalary()">
+          Submit
+        </button>
       </div>
-      <div class="content1">
-        <table id="employee">
-          <thead>
-            <th>
-              First Name
-            </th>
-            <th>
-              Last Name
-            </th>
-            <th>
-              Age
-            </th>
-            <th>
-              Salary
-            </th>
-            <th>
-              DOB
-            </th>
-            <th>
-              Address
-            </th>
-            <th>
-              Mobile
-            </th>
-            <th>
-              Name
-            </th>
-          </thead>
-          <tbody id="table_col">
-            <tr>
-              <td colspan="8">No Employees Found</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="container mt-3">
+        <h4 class="">Add Name Field</h4>
+        <button class="calsalaryrange  " onclick="addNameOnClick()">
+          Submit
+        </button>
+      </div>
+
+      <div class="container mt-3">
+        <h4 class="">Search By Phone Number</h4>
+        <input class="range  " id="phone_no" placeholder="Phone Number" />
+        <button class="calsalaryrange mt-3  " onclick="getEmpByPhoneOnClick()">
+          Submit
+        </button>
+      </div>
+
+      <div class="container mt-3">
+        <h4 class="">Search By Name / Phone Number</h4>
+        <input class="range  " id="phone" placeholder="Phone / Name" />
+        <button class="calsalaryrange mt-3  " onclick="getEmpByNameOrPhoneOnClick()">
+          Submit
+        </button>
+      </div>
+      <div class="container mt-3">
+        <h4 class="">Add Employees</h4>
+        <input class="range mt-3 " id="fname" placeholder="First Name" />
+        <input class="range mt-3 " id="lname" placeholder="Last Name" />
+        <input class="range mt-3 " id="age" placeholder="Age" />
+        <input class="range mt-3 " id="salary" placeholder="Salary" />
+        <input class="range mt-3 " id="dob" placeholder="Dob" />
+        <input class="range mt-3 " id="address" placeholder="Address" />
+        <input class="range mt-3 " id="mobile" placeholder="Mobile" />
+        <button class="calsalaryrange mt-3  " onclick="addEmployeesOnClick()">
+          Submit
+        </button>
+      </div>
+      <div class="container mt-3">
+        <h4 class="">Sort Employee</h4>
+        <select id="field1" class="select-field">
+          <option value="fName">First Name</option>
+          <option value="lName">Last Name</option>
+          <option value="age">Age</option>
+          <option value="salary">Salary</option>
+          <option value="dob">Dob</option>
+          <option value="address">Address</option>
+          <option value="mobile">Mobile</option>
+        </select>
+        <select id="field2" class="select-field">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+        <button class="calsalaryrange mt-3  " onclick="soreEmp()">
+          Submit
+        </button>
       </div>
     </div>
+    <div class="content1">
+      <table id="employee">
+        <thead>
+          <th>
+            First Name
+          </th>
+          <th>
+            Last Name
+          </th>
+          <th>
+            Age
+          </th>
+          <th>
+            Salary
+          </th>
+          <th>
+            DOB
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            Mobile
+          </th>
+          <th>
+            Name
+          </th>
+        </thead>
+        <tbody id="table_col">
+          <tr>
+            <td colspan="8">No Employees Found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <script>
-      /*------------------------------------   Input Object ---------------------------------------------*/
+  <script>
+    /*------------------------------------   Input Object ---------------------------------------------*/
+    const employees = [{
+        fName: 'test_fname0',
+        lName: 'test_lname0',
+        age: 20,
+        salary: 12000,
+        dob: '2019-06-28',
+        address: 'test_address0',
+        mobile: 47545454545
+      },
+      {
+        fName: 'test_fname1',
+        lName: 'test_lname1',
+        age: 22,
+        salary: 15000,
+        dob: '2019-05-27',
+        address: 'test_address1',
+        mobile: 3453654635463
+      },
+      {
+        fName: 'test_fname2',
+        lName: 'test_lname2',
+        age: 34,
+        salary: 16000,
+        dob: '2019-07-26',
+        address: 'test_address2',
+        mobile: 6767673878
+      },
+      {
+        fName: 'test_fname3',
+        lName: 'test_lname3',
+        age: 18,
+        salary: 22000,
+        dob: '2018-10-30',
+        address: 'test_address3',
+        mobile: 906456456
+      },
+      {
+        fName: 'test_fname4',
+        lName: 'test_lname4',
+        age: 27,
+        salary: 12000,
+        dob: '2019-01-18',
+        address: 'test_address4',
+        mobile: 5643554262
+      }
+    ];
 
-      const employees = [
-        {
-          fName: 'test_fname0',
-          lName: 'test_lname0',
-          age: 20,
-          salary: 12000,
-          dob: '2019-06-28',
-          address: 'test_address0',
-          mobile: 47545454545
-        },
-        {
-          fName: 'test_fname1',
-          lName: 'test_lname1',
-          age: 22,
-          salary: 15000,
-          dob: '2019-05-27',
-          address: 'test_address1',
-          mobile: 3453654635463
-        },
-        {
-          fName: 'test_fname2',
-          lName: 'test_lname2',
-          age: 34,
-          salary: 16000,
-          dob: '2019-07-26',
-          address: 'test_address2',
-          mobile: 6767673878
-        },
-        {
-          fName: 'test_fname3',
-          lName: 'test_lname3',
-          age: 18,
-          salary: 22000,
-          dob: '2018-10-30',
-          address: 'test_address3',
-          mobile: 906456456
-        },
-        {
-          fName: 'test_fname4',
-          lName: 'test_lname4',
-          age: 27,
-          salary: 12000,
-          dob: '2019-01-18',
-          address: 'test_address4',
-          mobile: 5643554262
-        }
-      ];
+    /*------------------------------------   Add Employee ---------------------------------------------*/
 
-      /*------------------------------------   Add Employee ---------------------------------------------*/
+    addEmployeesOnClick = () => {
+      fName = document.getElementById('fname').value;
+      lName = document.getElementById('lname').value;
+      age = document.getElementById('age').value;
+      salary = document.getElementById('salary').value;
+      dob = document.getElementById('dob').value;
+      address = document.getElementById('address').value;
+      mobile = document.getElementById('mobile').value;
+      name =
+        document.getElementById('fname').value +
+        ' ' +
+        document.getElementById('lname').value;
 
-      addEmployees = () => {
-        employees.push({
-          fName: document.getElementById('fname').value,
-          lName: document.getElementById('lname').value,
-          age: document.getElementById('age').value,
-          salary: document.getElementById('salary').value,
-          dob: document.getElementById('dob').value,
-          address: document.getElementById('address').value,
-          mobile: document.getElementById('mobile').value,
-          name:
-            document.getElementById('fname').value +
-            ' ' +
-            document.getElementById('lname').value
+      generateTable(
+        addEmployees(fName, lName, age, salary, dob, address, mobile, name)
+      );
+    };
+
+    addEmployees = (fName, lName, age, salary, dob, address, mobile, name) => {
+      employees.push({
+        fName: fName,
+        lName: lName,
+        age: age,
+        salary: salary,
+        dob: dob,
+        address: address,
+        mobile: mobile,
+        name: name
+      });
+      return employees;
+    };
+
+    /*----------------------------------  Filter by Name/Phone  ---------------------------------------*/
+
+    getEmpByNameOrPhoneOnClick = () => {
+      generateTable(
+        getEmpByNameOrPhone(document.getElementById('phone').value)
+      );
+    };
+
+    getEmpByNameOrPhone = data => {
+      let temp = [];
+      if (!data) return;
+      const regexp = new RegExp(data, 'i');
+      return (temp = employees.filter(
+        x =>
+        regexp.test(x.mobile) ||
+        regexp.test(x.fName) ||
+        regexp.test(x.lName)
+      ));
+    };
+
+    /*----------------------------------  Filter by Phone  ---------------------------------------*/
+
+    getEmpByPhoneOnClick = () => {
+      generateTable(getEmpByPhone(document.getElementById('phone_no').value));
+    };
+
+    getEmpByPhone = data => {
+      let temp = [];
+      if (!data) return;
+      return (temp = employees.filter(x => x.mobile == data));
+    };
+
+    /*--------------------------------------   Add Name Field ----------------------------------------*/
+
+    addNameOnClick = () => {
+      generateTable(addName());
+    };
+
+    addName = () => {
+      Object.keys(employees).map((elem, index) => {
+        employees[index].name =
+          employees[index].fName + ' ' + employees[index].lName;
+      });
+      return employees;
+    };
+
+    /*--------------------------------------   Filter By Salary --------------------------------------*/
+
+    filterBySalary = () => {
+      var range1 = document.getElementById('range1').value;
+      var range2 = document.getElementById('range2').value;
+      if (!range1) return;
+      else generateTable(filterEmpBySalary(range1, range2));
+    };
+
+    var filterEmpBySalary = (...x) => {
+      const [range1, range2] = x;
+      let temp = [];
+      if (range2 != '')
+        temp = employees.filter(employees => {
+          return employees.salary > range1 && employees.salary < range2;
         });
-        generateTable(employees);
-      };
+      else
+        temp = employees.filter(employees => {
+          return employees.salary > range1;
+        });
+      return temp;
+    };
 
-      /*----------------------------------  Filter by Name/Phone  ---------------------------------------*/
+    /*---------------------------------------   Sort Employee  ----------------------------------------*/
 
-      getEmpByNameOrPhone = () => {
-        var data = document.getElementById('phone').value;
-
-        let temp = [];
-
-        if (!data) return;
-
-        temp = employees.filter(employee => {
-          return (
-            employee.mobile == data ||
-            employee.fName == data ||
-            employee.lName == data
-          );
+    var sortEmployees = (element, order) => {
+      var clonedObj = Object.values(Object.assign({}, employees));
+      order == 'asc' ?
+        clonedObj.sort(function (a, b) {
+          if (typeof a[element] == 'number') return a[element] - b[element];
+          else if (typeof a[element] == 'string') {
+            if (a[element] < b[element]) {
+              return -1;
+            }
+            if (a[element] > b[element]) {
+              return 1;
+            }
+            return 0;
+          } else {
+            date1 = new Date(a[element]);
+            date2 = new Date(b[element]);
+            return date1 - date2;
+          }
+        }) :
+        clonedObj.sort(function (a, b) {
+          if (typeof a[element] == 'number') return b[element] - a[element];
+          else if (typeof a[element] == 'string') {
+            if (a[element] > b[element]) {
+              return -1;
+            }
+            if (a[element] < b[element]) {
+              return 1;
+            }
+            return 0;
+          } else {
+            date1 = new Date(a[element]);
+            date2 = new Date(b[element]);
+            return date2 - date1;
+          }
         });
 
-        generateTable(temp);
-      };
+      return clonedObj;
+    };
 
-      /*--------------------------------------   Add Name Field ----------------------------------------*/
-
-      addName = () => {
-        Object.keys(employees).map((elem, index) => {
-          employees[index].name =
-            employees[index].fName + ' ' + employees[index].lName;
-        });
-
-        generateTable(employees);
-      };
-
-      /*--------------------------------------   Filter By Salary --------------------------------------*/
-
-      filterBySalary = () => {
-        var range1 = document.getElementById('range1').value;
-        var range2 = document.getElementById('range2').value;
-
-        if (!range1) return;
-        else filterEmpBySalary(range1, range2);
-      };
-
-      var filterEmpBySalary = (...x) => {
-        const [range1, range2] = x;
-
-        let temp = [];
-
-        if (range2 != '')
-          temp = employees.filter(employees => {
-            return employees.salary > range1 && employees.salary < range2;
-          });
-        else
-          temp = employees.filter(employees => {
-            return employees.salary > range1;
-          });
-
-        generateTable(temp);
-      };
-
-      /*---------------------------------------   Sort Employee  ----------------------------------------*/
-
-      var sortEmployees = (element, order) => {
-        var clonedObj = Object.values(Object.assign({}, employees));
-
-        order == 'asc'
-          ? clonedObj.sort(function(a, b) {
-              if (typeof a[element] == 'number') return a[element] - b[element];
-              else if (typeof a[element] == 'string') {
-                if (a[element] < b[element]) {
-                  return -1;
-                }
-                if (a[element] > b[element]) {
-                  return 1;
-                }
-                return 0;
-              } else {
-                date1 = new Date(a[element]);
-                date2 = new Date(b[element]);
-                return date1 - date2;
-              }
-            })
-          : clonedObj.sort(function(a, b) {
-              if (typeof a[element] == 'number') return b[element] - a[element];
-              else if (typeof a[element] == 'string') {
-                if (a[element] > b[element]) {
-                  return -1;
-                }
-                if (a[element] < b[element]) {
-                  return 1;
-                }
-                return 0;
-              } else {
-                date1 = new Date(a[element]);
-                date2 = new Date(b[element]);
-                return date2 - date1;
-              }
-            });
-
-        generateTable(clonedObj);
-      };
-
-      soreEmp = () => {
+    soreEmp = () => {
+      generateTable(
         sortEmployees(
           document.getElementById('field1').value,
           document.getElementById('field2').value
-        );
-      };
-      /*------------------------------------   Generate Table  ----------------------------------------*/
-      generateTable = obj => {
-        var clonedObj = obj;
+        )
+      );
+    };
+    /*------------------------------------   Generate Table  ----------------------------------------*/
+    generateTable = obj => {
+      var clonedObj = obj;
+      var str = '';
+      for (d in clonedObj) {
+        str += '<tr>';
+        for (d2 in clonedObj[d]) str += '<td>' + clonedObj[d][d2] + '</td>';
+        if (!clonedObj[d].name) str += '<td></td>';
+        str += '</tr>';
+      }
+      if (!str) str += '<tr><td colspan="8">No Employees Found</td></tr>';
+      document.getElementById('table_col').innerHTML = str;
+    };
+    generateTable(Object.values(Object.assign({}, employees)));
+  </script>
+</body>
 
-        var str = '';
-
-        for (d in clonedObj) {
-          str += '<tr>';
-
-          for (d2 in clonedObj[d]) str += '<td>' + clonedObj[d][d2] + '</td>';
-
-          if (!clonedObj[d].name) str += '<td></td>';
-
-          str += '</tr>';
-        }
-        if (!str) str += '<tr><td colspan="8">No Employees Found</td></tr>';
-
-        document.getElementById('table_col').innerHTML = str;
-      };
-
-      generateTable(Object.values(Object.assign({}, employees)));
-    </script>
-  </body>
 </html>
